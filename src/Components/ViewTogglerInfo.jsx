@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 
 class ViewTogglerInfo extends Component {
-  state = { isVisible: true };
+  state = { isVisible: false };
 
   handleClick = (event) => {
     this.setState((currentState) => {
