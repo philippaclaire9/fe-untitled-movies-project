@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import ErrorHandler from "./ErrorHandler";
-import aws from "aws-sdk";
-import { SRLWrapper } from "simple-react-lightbox";
+import React, { Component } from 'react';
+import ErrorHandler from './ErrorHandler';
+import aws from 'aws-sdk';
+import { SRLWrapper } from 'simple-react-lightbox';
 
 class ImageCard extends Component {
   state = {
     isLoading: true,
-    img: "",
+    img: '',
     error: null,
   };
 
   getImage = () => {
     const s3 = new aws.S3();
     const params = {
-      Bucket: "movieapp-users-images",
+      Bucket: 'movieapp-users-images',
       Key: this.props.imageKey,
     };
 
@@ -24,7 +24,7 @@ class ImageCard extends Component {
       })
       .catch((error) => {
         const message =
-          "We have not being able to load your image, please go back to your profile and try again";
+          'We have not being able to load your image, please go back to your profile and try again';
         this.setState({
           error: { message },
         });
@@ -36,7 +36,7 @@ class ImageCard extends Component {
   }
 
   render() {
-    if (this.state.isLoading) return "Loading ....";
+    if (this.state.isLoading) return 'Loading ....';
     const image = new Image();
     image.src = this.state.img;
     if (!this.state.isLoading) {
@@ -45,35 +45,35 @@ class ImageCard extends Component {
           <ErrorHandler apierrors={this.state.error} />
           <div
             style={{
-              backgroundColor: "#E7E5DF",
-              padding: "5px",
-              borderRadius: "5px",
+              backgroundColor: '#E7E5DF',
+              padding: '5px',
+              borderRadius: '5px',
             }}
           >
-            <SRLWrapper style={{ borderRadius: "10px" }}>
-              <img src={`${image.src}`} style={{ width: "100%" }} />
+            <SRLWrapper style={{ borderRadius: '10px' }}>
+              <img src={`${image.src}`} style={{ width: '100%' }} />
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  padding: "4px",
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  padding: '4px',
                 }}
               >
                 <img
-                  alt={"share icon"}
-                  src={require("./share.png")}
-                  style={{ width: "15px" }}
+                  alt={'share icon'}
+                  src={require('./share.png')}
+                  style={{ width: '15px', height: '15px' }}
                 />
                 <img
-                  alt={"share icon"}
-                  src={require("./instagram.png")}
-                  style={{ width: "15px" }}
+                  alt={'share icon'}
+                  src={require('./instagram.png')}
+                  style={{ width: '15px', height: '15px' }}
                 />
                 <img
-                  alt={"share icon"}
-                  src={require("./whatsapp.png")}
-                  style={{ width: "15px" }}
+                  alt={'share icon'}
+                  src={require('./whatsapp.png')}
+                  style={{ width: '15px', height: '15px' }}
                 />
               </div>
             </SRLWrapper>
